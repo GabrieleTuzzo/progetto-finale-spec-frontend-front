@@ -1,12 +1,16 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GlobalContext } from './contexts/GlobalContext';
+import useMotorcycles from './hooks/useMotorcycles';
+// Pages
 import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
 
 function App() {
+    const { motorcycles } = useMotorcycles();
+
     return (
-        <GlobalContext.Provider value={{}}>
+        <GlobalContext.Provider value={{ motorcycles }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
