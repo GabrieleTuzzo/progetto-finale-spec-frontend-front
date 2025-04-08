@@ -5,6 +5,8 @@ import useMotorcycles from './hooks/useMotorcycles';
 // Pages
 import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
+// Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const { motorcycles } = useMotorcycles();
