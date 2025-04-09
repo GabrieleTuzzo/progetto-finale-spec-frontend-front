@@ -4,6 +4,7 @@ import useMotorcycles from './hooks/useMotorcycles';
 // Pages
 import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
+import DefaultLayout from './layouts/DefaultLayout';
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,8 +15,13 @@ function App() {
         <GlobalContext.Provider value={{ motorcycles }}>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/motorcycle/:id" element={<DetailPage />} />
+                    <Route path="/" element={<DefaultLayout />}>
+                        <Route path="/" element={<Home />} />
+                        <Route
+                            path="/motorcycle/:id"
+                            element={<DetailPage />}
+                        />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </GlobalContext.Provider>

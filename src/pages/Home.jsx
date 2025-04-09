@@ -1,9 +1,32 @@
+import { useContext } from 'react';
+import { GlobalContext } from '../contexts/GlobalContext';
+import { useNavigate } from 'react-router-dom';
+import Card from '../components/Card';
+import Filters from '../components/Filters';
+
 export default function Home() {
+    const { motorcycles } = useContext(GlobalContext);
+    const navigate = useNavigate();
+
+    const handleClick = (id) => {
+        navigate(`/motorcycle/${id}`);
+    };
+
     return (
-        <div>
-            <h1>Welcome to the Motorcycle App</h1>
-            <p>This is the home page.</p>
-            <p>Click on a motorcycle to see its details.</p>
-        </div>
+        <section>
+            <div>
+                <Filters />
+            </div>
+            <div className="row g-3">
+                {motorcycles &&
+                    motorcycles.map((motorcycle, i) => (
+                        <Card
+                            key={motorcycle.id}
+                            motorcycle={motorcycle}
+                            onClick={() => handleClick(motorcycle.id)}
+                        />
+                    ))}
+            </div>
+        </section>
     );
 }
