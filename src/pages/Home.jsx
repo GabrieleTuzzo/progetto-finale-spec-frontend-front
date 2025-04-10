@@ -5,7 +5,7 @@ import Card from '../components/Card';
 import Filters from '../components/Filters';
 
 export default function Home() {
-    const { motorcycles } = useContext(GlobalContext);
+    const { filteredMotorcycles } = useContext(GlobalContext);
     const navigate = useNavigate();
 
     const handleClick = (id) => {
@@ -18,8 +18,8 @@ export default function Home() {
                 <Filters />
             </div>
             <div className="row g-3">
-                {motorcycles &&
-                    motorcycles.map((motorcycle, i) => (
+                {filteredMotorcycles &&
+                    filteredMotorcycles.map((motorcycle) => (
                         <Card
                             key={motorcycle.id}
                             motorcycle={motorcycle}

@@ -9,10 +9,10 @@ import DefaultLayout from './layouts/DefaultLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-    const { motorcycles } = useMotorcycles();
+    const motorcyclesController = useMotorcycles();
 
     return (
-        <GlobalContext.Provider value={{ motorcycles }}>
+        <GlobalContext.Provider value={motorcyclesController}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<DefaultLayout />}>
