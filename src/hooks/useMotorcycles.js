@@ -15,6 +15,15 @@ export default function useMotorcycles() {
         fetchMotorcycles();
     }, []);
 
+    function fetchMotorcycleById(id) {
+        async function fetchMotorcycle() {
+            const res = await fetchData(`/motorcycles/${id}`, 'GET');
+            return res;
+        }
+
+        return fetchMotorcycle();
+    }
+
     function getCategories() {
         if (!motorcycles) return [];
         const categories = motorcycles.map((motorcycle) => motorcycle.category);
@@ -79,5 +88,6 @@ export default function useMotorcycles() {
         resetFilters,
         getCategories,
         sortMotorcycles,
+        fetchMotorcycleById,
     };
 }

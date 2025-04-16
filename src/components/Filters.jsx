@@ -16,8 +16,8 @@ export default function Filters() {
     }, [search, category]);
 
     return (
-        <div className="row g-3">
-            <div className="col-md-4 col-lg-2">
+        <div className="row g-3 mb-3">
+            <div className="col-md-4 col-lg-3">
                 <input
                     type="text"
                     className="form-control"
@@ -26,7 +26,7 @@ export default function Filters() {
                     onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
-            <div className="col-md-4 col-lg-2">
+            <div className="col-md-4 col-lg-3">
                 <select
                     className="form-select"
                     value={category}
@@ -41,39 +41,41 @@ export default function Filters() {
                         ))}
                 </select>
             </div>
-            <div className="col-md-4 col-lg-2 d-flex gap-2">
-                <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                        const newKey =
-                            sortBy === 'title' ? 'category' : 'title';
-                        setSortBy(newKey);
-                        sortMotorcycles({
-                            key: newKey,
-                            direction: sortDirection,
-                        });
-                    }}
-                >
-                    Sort by: {sortBy}
-                </button>
-                <button
-                    className="btn btn-secondary"
-                    onClick={() => {
-                        const newDirection =
-                            sortDirection === 'asc' ? 'desc' : 'asc';
-                        setSortDirection(newDirection);
-                        sortMotorcycles({
-                            key: sortBy,
-                            direction: newDirection,
-                        });
-                    }}
-                >
-                    Direction: {sortDirection}
-                </button>
+            <div className="col-md-4 col-lg-3">
+                <div className="d-flex gap-2">
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                            const newKey =
+                                sortBy === 'title' ? 'category' : 'title';
+                            setSortBy(newKey);
+                            sortMotorcycles({
+                                key: newKey,
+                                direction: sortDirection,
+                            });
+                        }}
+                    >
+                        Sort by: {sortBy}
+                    </button>
+                    <button
+                        className="btn btn-secondary"
+                        onClick={() => {
+                            const newDirection =
+                                sortDirection === 'asc' ? 'desc' : 'asc';
+                            setSortDirection(newDirection);
+                            sortMotorcycles({
+                                key: sortBy,
+                                direction: newDirection,
+                            });
+                        }}
+                    >
+                        Direction: {sortDirection}
+                    </button>
+                </div>
             </div>
-            <div className="col-md-4 col-lg-2">
+            <div className="col-md-4 col-lg-3">
                 <button
-                    className="btn btn-danger"
+                    className="btn btn-danger w-100"
                     onClick={() => {
                         setSearch('');
                         setCategory('');

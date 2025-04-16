@@ -14,6 +14,7 @@ export default function Home() {
 
     return (
         <section>
+            <h1>Welcome to the Bikers Friend!</h1>
             <div>
                 <Filters />
             </div>
