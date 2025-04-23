@@ -8,7 +8,7 @@ export default function Home() {
     const { filteredMotorcycles } = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const handleClick = (id) => {
+    const goToDetail = (id) => {
         navigate(`/motorcycle/${id}`);
     };
 
@@ -18,13 +18,13 @@ export default function Home() {
             <div>
                 <Filters />
             </div>
-            <div className="row g-3">
+            <div className="row g-3 mb-3">
                 {filteredMotorcycles &&
                     filteredMotorcycles.map((motorcycle) => (
                         <Card
                             key={motorcycle.id}
-                            motorcycle={motorcycle}
-                            onClick={() => handleClick(motorcycle.id)}
+                            item={motorcycle}
+                            onClickCard={() => goToDetail(motorcycle.id)}
                         />
                     ))}
             </div>

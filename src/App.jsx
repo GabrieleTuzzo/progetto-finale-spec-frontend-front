@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GlobalContext } from './contexts/GlobalContext';
+// Hooks
+import useFavorites from './hooks/useFavorites';
 import useMotorcycles from './hooks/useMotorcycles';
 // Pages
 import Home from './pages/Home';
@@ -14,9 +16,12 @@ import './App.css';
 
 function App() {
     const motorcyclesController = useMotorcycles();
+    const favoritesController = useFavorites();
 
     return (
-        <GlobalContext.Provider value={motorcyclesController}>
+        <GlobalContext.Provider
+            value={{ ...motorcyclesController, ...favoritesController }}
+        >
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<DefaultLayout />}>
