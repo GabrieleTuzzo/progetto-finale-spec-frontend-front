@@ -3,6 +3,7 @@ import { GlobalContext } from './contexts/GlobalContext';
 // Hooks
 import useFavorites from './hooks/useFavorites';
 import useMotorcycles from './hooks/useMotorcycles';
+import useComparator from './hooks/useComparator';
 // Pages
 import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
@@ -17,10 +18,15 @@ import './App.css';
 function App() {
     const motorcyclesController = useMotorcycles();
     const favoritesController = useFavorites();
+    const comparatorController = useComparator();
 
     return (
         <GlobalContext.Provider
-            value={{ ...motorcyclesController, ...favoritesController }}
+            value={{
+                ...motorcyclesController,
+                ...favoritesController,
+                ...comparatorController,
+            }}
         >
             <BrowserRouter>
                 <Routes>

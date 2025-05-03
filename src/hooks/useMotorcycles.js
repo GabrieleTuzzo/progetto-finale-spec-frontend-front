@@ -8,8 +8,11 @@ export default function useMotorcycles() {
     useEffect(() => {
         async function fetchMotorcycles() {
             const fetchedMotorcycles = await fetchData('/motorcycles', 'GET');
-            setMotorcycles(fetchedMotorcycles);
-            setFilteredMotorcycles(fetchedMotorcycles);
+            const defaultSortedMotorcycles = [...fetchedMotorcycles].sort(
+                (a, b) => a.title.localeCompare(b.title)
+            );
+            setMotorcycles(defaultSortedMotorcycles);
+            setFilteredMotorcycles(defaultSortedMotorcycles);
         }
 
         fetchMotorcycles();
@@ -22,6 +25,13 @@ export default function useMotorcycles() {
         }
 
         return fetchMotorcycle();
+    }
+
+    function fetchMotorcyclesByIds(ids) {
+        const promises = ids.map((id) =>
+            fetchData(`/motorcycles/${id}`, 'GET')
+        );
+        return Promise.all(promises);
     }
 
     function getCategories() {
@@ -89,5 +99,6 @@ export default function useMotorcycles() {
         getCategories,
         sortMotorcycles,
         fetchMotorcycleById,
+        fetchMotorcyclesByIds,
     };
 }
