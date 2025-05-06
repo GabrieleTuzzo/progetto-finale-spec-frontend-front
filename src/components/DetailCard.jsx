@@ -1,8 +1,20 @@
+import { useContext } from 'react';
+import { GlobalContext } from '../contexts/GlobalContext';
+
 export default function DetailCard({
     item,
     additionalClass = '',
-    isCompared = false,
+    isMinimal = false,
 }) {
+    const {
+        isFavorite,
+        removeFromFavorites,
+        addToFavorites,
+        addToComparator,
+        removeFromComparator,
+        isCompared,
+    } = useContext(GlobalContext);
+
     return (
         <div className={`container ${additionalClass}`}>
             <div className="card h-100">
@@ -12,11 +24,49 @@ export default function DetailCard({
                     alt={item.title}
                 />
                 <div className="card-body">
-                    {isCompared ? (
-                        <h4 className="card-title">{item.title}</h4>
-                    ) : (
-                        <h1 className="card-title">{item.title}</h1>
-                    )}
+                    <div className="d-flex justify-content-between align-items-center">
+                        {isMinimal ? (
+                            <h4 className="card-title">{item.title}</h4>
+                        ) : (
+                            <>
+                                <h1 className="card-title">{item.title}</h1>
+                                <div>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (isFavorite(item)) {
+                                                removeFromFavorites(item);
+                                            } else {
+                                                addToFavorites(item);
+                                            }
+                                        }}
+                                        className="btn fs-5"
+                                    >
+                                        {isFavorite(item) ? '🌟' : '⭐'}
+                                    </button>
+                                    <button
+                                        className={`btn ${
+                                            isCompared(item.id)
+                                                ? 'btn-outline-primary'
+                                                : 'btn-primary'
+                                        } mt-auto`}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (isCompared(item.id)) {
+                                                removeFromComparator(item.id);
+                                            } else {
+                                                addToComparator(item.id);
+                                            }
+                                        }}
+                                    >
+                                        {isCompared(item.id)
+                                            ? 'Remove from Comparator'
+                                            : 'Add to Comparator'}
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                    </div>
                     <p className="card-text">
                         <strong>Category:</strong> {item.category}
                     </p>

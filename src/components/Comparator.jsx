@@ -77,7 +77,7 @@ export default function Comparator() {
                                         item={res.motorcycle}
                                         additionalClass="col-md-6 col-lg-4 col-xl-3 p-2 flex-grow-1"
                                         // "col-md-4 col-lg-3 p-2"
-                                        isCompared={true}
+                                        isMinimal={true}
                                     />
                                 ))}
                             </div>
