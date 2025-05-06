@@ -16,8 +16,8 @@ export default function Filters() {
     }, [search, category]);
 
     return (
-        <div className="row g-3 mb-3">
-            <div className="col-md-4 col-lg-3">
+        <div className="row g-3 mb-3 align-items-center">
+            <div className="col-md-12 col-lg-6 d-flex gap-2">
                 <input
                     type="text"
                     className="form-control"
@@ -25,8 +25,6 @@ export default function Filters() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-            </div>
-            <div className="col-md-4 col-lg-3">
                 <select
                     className="form-select"
                     value={category}
@@ -41,10 +39,10 @@ export default function Filters() {
                         ))}
                 </select>
             </div>
-            <div className="col-md-4 col-lg-3">
+            <div className="col-md-6 col-lg-3">
                 <div className="d-flex gap-2">
                     <button
-                        className="btn btn-primary"
+                        className="btn btn-primary flex-grow-1"
                         onClick={() => {
                             const newKey =
                                 sortBy === 'title' ? 'category' : 'title';
@@ -58,7 +56,7 @@ export default function Filters() {
                         Sort by: {sortBy}
                     </button>
                     <button
-                        className="btn btn-secondary"
+                        className="btn btn-secondary flex-grow-1"
                         onClick={() => {
                             const newDirection =
                                 sortDirection === 'asc' ? 'desc' : 'asc';
@@ -73,9 +71,9 @@ export default function Filters() {
                     </button>
                 </div>
             </div>
-            <div className="col-md-4 col-lg-3">
+            <div className="col-md-6 col-lg-3">
                 <button
-                    className="btn btn-danger w-100"
+                    className="btn btn-danger w-100 text-nowrap"
                     onClick={() => {
                         setSearch('');
                         setCategory('');

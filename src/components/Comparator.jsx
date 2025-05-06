@@ -25,8 +25,6 @@ export default function Comparator() {
         fetchDetails();
     }, [comparator, fetchMotorcyclesByIds]);
 
-    console.log('motorcycleDetails', motorcycleDetails);
-
     return (
         <>
             {comparator.length !== 0 && (
@@ -75,8 +73,10 @@ export default function Comparator() {
                             <div className="modal-body row">
                                 {motorcycleDetails.map((res) => (
                                     <DetailCard
+                                        key={res.motorcycle.id}
                                         item={res.motorcycle}
-                                        additionalClass="col-md-4 col-lg-3 p-2"
+                                        additionalClass="col-md-3 col-lg-3 p-2"
+                                        // "col-md-4 col-lg-3 p-2"
                                         isCompared={true}
                                     />
                                 ))}

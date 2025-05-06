@@ -17,7 +17,7 @@ export default function Card({ item, onClickCard = null, isMinimal = false }) {
                 <div
                     className={`card-body ${
                         onClickCard === null || 'clickable'
-                    }`}
+                    } d-flex flex-column`}
                 >
                     <div className="d-flex align-items-baseline justify-content-between">
                         <h5 className="card-title">{item.title}</h5>
