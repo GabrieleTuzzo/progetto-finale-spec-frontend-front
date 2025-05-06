@@ -17,7 +17,7 @@ export default function Filters() {
 
     return (
         <div className="row g-3 mb-3 align-items-center">
-            <div className="col-md-12 col-lg-6 d-flex gap-2">
+            <div className="col-md-12 col-xl-6 d-flex gap-2">
                 <input
                     type="text"
                     className="form-control"
@@ -39,7 +39,7 @@ export default function Filters() {
                         ))}
                 </select>
             </div>
-            <div className="col-md-6 col-lg-3">
+            <div className="col-md-6 col-xl-3">
                 <div className="d-flex gap-2">
                     <button
                         className="btn btn-primary flex-grow-1"
@@ -71,7 +71,7 @@ export default function Filters() {
                     </button>
                 </div>
             </div>
-            <div className="col-md-6 col-lg-3">
+            <div className="col-md-6 col-xl-3">
                 <button
                     className="btn btn-danger w-100 text-nowrap"
                     onClick={() => {

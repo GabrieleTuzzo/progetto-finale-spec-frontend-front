@@ -40,7 +40,11 @@ export default function Card({ item, onClickCard = null, isMinimal = false }) {
                     <p className="card-text">{item.category}</p>
                     {isMinimal || (
                         <button
-                            className={`btn btn-primary mt-auto`}
+                            className={`btn ${
+                                isCompared(item.id)
+                                    ? 'btn-outline-primary'
+                                    : 'btn-primary'
+                            } mt-auto`}
                             onClick={(e) => {
                                 e.stopPropagation();
                                 if (isCompared(item.id)) {
